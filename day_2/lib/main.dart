@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'question.dart';
+import 'button.dart';
 void main() => runApp(App());
 
 class App extends StatefulWidget {
@@ -13,7 +14,6 @@ class App extends StatefulWidget {
 class AppState extends State<App> {
   var questions = ["day 1 examples", "day 2 examples"];
   int questions_index = 0;
-
   void answerQuestion() {
     setState(
       () {
@@ -27,7 +27,6 @@ class AppState extends State<App> {
       },
     );
   }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -37,19 +36,14 @@ class AppState extends State<App> {
         ),
         body: Column(
           children: [
-            Text(questions[questions_index]),
-            ElevatedButton(
-              onPressed: answerQuestion,
-              child: Text("Yes"),
-            ),
-            ElevatedButton(
-              onPressed: answerQuestion,
-              child: Text("No"),
-            ),
-            ElevatedButton(
-              onPressed: answerQuestion,
-              child: Text("Processing"),
-            ),
+            Question(questions[questions_index]),
+            Button(answerQuestion,"yes"),
+            // ElevatedButton(
+            //   onPressed: answerQuestion,
+            //   child: Text("Yes"),
+            // ),
+            Button(answerQuestion,"No"),
+            Button(answerQuestion,"maybe"),
           ],
         ),
       ),
